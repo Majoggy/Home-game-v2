@@ -1,0 +1,12 @@
+Create 3 schemas -
+
+- Players
+
+- Games
+
+- Users
+
+Set up the same as home game v1. 
+Users schema has virtual fields to track games and players created by user.
+Player and game schemas can be created, edited and deleted directly.
+But they are viewed through the virtual fields of the user schema.
