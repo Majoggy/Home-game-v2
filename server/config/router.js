@@ -2,8 +2,13 @@ import express from 'express'
 import players from '../controllers/players.js'
 import auth from '../controllers/auth.js'
 import secureRoute from '../lib/secureRoute.js'
+import games from '../controllers/games.js'
 
 const router = express.Router()
+
+router.route('/games')
+  .get(games.index)
+  .post(games.create)
 
 router.route('/players')
   .get(secureRoute, players.index)
