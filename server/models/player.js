@@ -4,6 +4,7 @@ import mongooseUniqueValidator from 'mongoose-unique-validator'
 const playerSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   image: { type: String, required: false, unique: false },
+  userId: { type: String, required: true, unique: false },
 })
 
 // Plugin that adds error handling for unique values

@@ -61,10 +61,25 @@ async function deletePlayer (req, res, next) {
   }
 }
 
+// Get player index created by User
+async function indexByUser (req, res, next) {
+  try {
+    const { userId } = req.params
+    const players = await Players.find({ userId })
+    if (!players || players.length < 1){
+      throw new NotFound()
+    }
+    return res.status(200).json(players)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   index: playerIndex,
   show: getSinglePlayer,
   create: createPlayer,
   update: editPlayer,
   delete: deletePlayer,
+  indexByUser: indexByUser,
 }
