@@ -15,7 +15,9 @@ export default function errorHandler(err, req, res, next) {
     return res.status(422).json(customErrors)
   }
 
-  if (err.name === 'Unauthorized') {
+  if (err.name === 'JsonWebTokenError' ||
+    err.name === 'TokenExpiredError' ||
+    err.name === 'Unauthorized') {
     return res.status(401).json({ message: 'Unauthorized' })
   }
 
