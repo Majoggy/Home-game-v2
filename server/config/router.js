@@ -10,6 +10,10 @@ router.route('/games')
   .get(games.index)
   .post(games.create)
 
+router.route('/games/:gameId')
+  .get(games.show)
+  .put(games.update)
+
 router.route('/players')
   .get(players.index)
   .post(players.create)
