@@ -17,7 +17,7 @@ async function playerIndex (_req, res, next) {
 async function getSinglePlayer (req, res, next) {
   try {
     const { playerId } = req.params
-    const foundPlayer = await Players.findById(playerId)
+    const foundPlayer = await Players.findById(playerId).populate('userId')
     if (!foundPlayer) throw new NotFound()
     return res.status(200).json(foundPlayer)
   } catch (err) {

@@ -10,6 +10,15 @@ const userSchema = new mongoose.Schema({
   isAdmin: { type: Boolean, default: false },
 })
 
+// Removes password field on conversion to JSON
+
+userSchema.set('toJSON', {
+  transform(_doc, json) {
+    delete json.password
+    return json
+  },
+})
+
 //  Create virtual field for password validation
 
 userSchema

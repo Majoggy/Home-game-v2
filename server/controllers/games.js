@@ -17,7 +17,7 @@ async function gameIndex (_req, res, next) {
 async function getSingleGame (req, res, next) {
   try {
     const { gameId } = req.params
-    const foundGame = await Games.findById(gameId)
+    const foundGame = await Games.findById(gameId).populate('userId')
     if (!foundGame) throw new NotFound()
     return res.status(200).json(foundGame)
   } catch (err) {
@@ -65,12 +65,14 @@ async function deleteGame (req, res, next) {
 async function indexByUser (req, res, next) {
   try {
     const { userId } = req.params
-    const games = await games.find({ userId })
+    console.log(userId)
+    const games = await Games.find({ userId })
     if (!games || games.length < 1){
       throw new NotFound()
     }
     return res.status(200).json(games)
   } catch (err) {
+    console.log('hi')
     next(err)
   }
 }

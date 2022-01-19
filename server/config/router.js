@@ -14,6 +14,8 @@ router.route('/games/:gameId')
   .get(games.show)
   .put(games.update)
 
+router.get('/games/user/:userId', games.indexByUser)
+
 router.route('/players')
   .get(players.index)
   .post(players.create)
