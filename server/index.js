@@ -16,7 +16,7 @@ app.use(express.json())
 app.use('/', logger)
 
 // * Routing Middleware (exported from config/router and controllers)
-app.use(router)
+app.use('/api', router)
 
 // * Error handling Middleware (exported from lib)
 app.use(errorHandler)

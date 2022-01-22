@@ -1,0 +1,36 @@
+// Login
+
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-content-wrap {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-field-spacing {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  padding: 10px;
+}
+
+.input {
+  padding: 10px;
+}
