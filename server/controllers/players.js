@@ -27,8 +27,9 @@ async function getSinglePlayer (req, res, next) {
 
 // Create new player
 async function createPlayer (req, res, next) {
+  const { currentUser } = req
   try {
-    const createdPlayer = await Players.create(req.body)
+    const createdPlayer = await Players.create({ ...req.body, addedBy: currentUser })
     return res.status(201).json(createdPlayer)
   } catch (err) {
     next(err)

@@ -17,7 +17,6 @@ const gameSchema = new mongoose.Schema({
   thirdPrize: { type: Number, required: true },
   date: { type: String },
   notes: { type: String },
-  // userId: { type: String, required: true, unique: false },
   userId: { type: mongoose.Schema.ObjectId, ref: 'Users', required: true },
 })
 

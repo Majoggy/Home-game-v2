@@ -17,6 +17,9 @@ export default async function secureRoute(req, _res, next) {
       throw new Unauthorized()
     }
 
+    req.currentUser = user
+    req.currentUserId = user._id
+
     next()
   } catch (err) {
     next(err)

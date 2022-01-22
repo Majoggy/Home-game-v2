@@ -27,8 +27,9 @@ async function getSingleGame (req, res, next) {
 
 // Create new Game
 async function createGame (req, res, next) {
+  const { currentUser } = req
   try {
-    const createdGame = await Games.create(req.body)
+    const createdGame = await Games.create({ ...req.body, userId: currentUser })
     return res.status(201).json(createdGame)
   } catch (err) {
     next(err)

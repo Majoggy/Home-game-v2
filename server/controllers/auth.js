@@ -1,5 +1,5 @@
 import User from '../models/user.js'
-import { Unauthorized } from '../lib/errors.js'
+import { Unauthorized, NotFound } from '../lib/errors.js'
 import jwt from 'jsonwebtoken'
 import { secret } from '../config/environment.js'
 
@@ -44,8 +44,23 @@ async function userIndex (_req, res, next) {
   }
 }
 
+async function profile (req, res, next) {
+  try {
+    const { currentUserId } = req
+    const user = await User.findById(currentUserId)
+      .populate('addedGames')
+      .populate('addedPlayers')
+
+    if (!user) throw new NotFound()
+    return res.status(200).json(user)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   register: registerUser,
   login: loginUser,
   index: userIndex,
+  profile: profile,
 }
