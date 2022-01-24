@@ -1,8 +1,10 @@
 import React from 'react'
 import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+  const navigate = useNavigate()
 
   const initialState = {
     email: '',
@@ -18,8 +20,9 @@ function Login() {
     try {
       const { data } = await loginUser(formData)
       setToken(data.token)
-      console.log('You are logged in!')
-      console.log('Token is', data.token )
+      console.log(data.message)
+      navigate('/dashboard')
+
     } catch (err) {
       setIsError(true)
     }
