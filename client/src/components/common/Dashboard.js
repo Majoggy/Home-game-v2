@@ -1,6 +1,7 @@
 import React from 'react'
 import { profileUser } from '../../lib/api'
 import { getPayLoad } from '../../lib/auth'
+import { statify } from '../../lib/helpers'
 
 function Dashboard() {
   const [userId, setUserId] = React.useState(null)
@@ -12,7 +13,9 @@ function Dashboard() {
         const user = payLoad.sub
         setUserId(user)
         const response = await profileUser(userId)
-        console.log(response.data)
+        const userData = response.data
+        console.log(userData)
+        console.log(statify(userData))
       } catch (err) {
         console.log('Something has gone wrong!')
       }
