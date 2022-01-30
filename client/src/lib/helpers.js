@@ -12,8 +12,8 @@ export function statify (data) {
   data.addedPlayers.forEach(player => {
     const name = player.name
     let playerObj = { 'name': name }
+    
     data.addedGames.forEach(game => {
-
       Object.entries(game).forEach(field => {
         const [ key, value ] = field
         if (value === name) {
@@ -30,21 +30,26 @@ export function statify (data) {
       })
       playerObj = { ...playerObj, ...statObj }
     })
-
     statObj = { placings: [], buyIns: [], winnings: [] }
-
-    playerObj.winnings = _.sum(playerObj.winnings)
-    playerObj.buyIns = _.sum(playerObj.buyIns)
-    playerObj.total = playerObj.winnings - playerObj.buyIns
-    playerObj.gamesPlayed = playerObj.placings.length
-    playerObj.topTwoPercentage = percentage(topTwoCount(playerObj.placings, paidPlaces), playerObj.gamesPlayed)    
-    playerObj.average = minusFormatting((playerObj.total / playerObj.gamesPlayed).toFixed(1))
-
-    if (playerObj.gamesPlayed === 0) playerObj = { ...playerObj, average: '-', topTwoPercentage: '-', 'total': '-' } 
-    delete playerObj.placings
-    newData.push(playerObj)
+    newData.push(populatePlayerObj(playerObj, paidPlaces))
   })
   return newData
+}
+
+function populatePlayerObj(player, places){
+  player.winnings = _.sum(player.winnings)
+  player.buyIns = _.sum(player.buyIns)
+  player.total = player.winnings - player.buyIns
+  player.gamesPlayed = player.placings.length
+  player.topTwoPercentage = percentage(topTwoCount(player.placings, places), player.gamesPlayed)    
+  player.average = minusFormatting((player.total / player.gamesPlayed).toFixed(1))
+  
+  if (player.gamesPlayed === 0) {
+    player = { ...player, average: '-', topTwoPercentage: '-', 'total': '-' } 
+  }
+
+  delete player.placings
+  return player
 }
 
 function topTwoCount (placings, paidPlaces) {
