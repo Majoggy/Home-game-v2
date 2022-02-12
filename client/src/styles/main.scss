@@ -1,23 +1,59 @@
 // Login
 
+body {
+  margin: 0;
+}
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
+  font-weight:  300;
+  margin:  0;
+}
+
 .login-wrap {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  // justify-content: center;
+  flex-direction: row;
   align-items: center;
   height: 100vh;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  margin: auto auto;
+}
+
+.banner-left {
+  background-color: #dd746c;
+  width:  12%;
+  height:  auto;
+  min-height:  100%;
+  position:  relative;
 }
 
 .login-content-wrap {
   height: 350px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px;
+
+  h1, p {
+    margin: 10px;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 4rem;
+  }
+
+  label, input {
+    font-weight: 350;
+  }
 }
 
 .form-field-spacing {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 50%;
   padding: 10px;
   box-sizing: border-box;
@@ -26,11 +62,28 @@
 .form-wrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 600px;
   padding: 10px;
 }
 
-.input {
-  padding: 10px;
+input {
+  padding: 15px;
+  height: 50px;
+  background-color: #fcd9d9;
+  border: none;
+  transition: 0.5s;
+}  
+
+input[type="submit"] {
+  background-color: #dd746c;
+}
+
+  input[type="email"]:focus, input[type="password"]:focus {
+  background-color: #dd746c;
+  outline: none;
+  color: white;
+  }
+
+  input:focus::-webkit-input-placeholder {
+    color: white;
 }

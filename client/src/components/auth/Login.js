@@ -37,6 +37,8 @@ function Login() {
   return (
     <>
       <div className="login-wrap">
+        <div className="banner-left">
+        </div>
         <div className="login-content-wrap">
           <h1>Login</h1>
           <form onSubmit={handleSubmit} className="form-wrap">
@@ -44,7 +46,7 @@ function Login() {
             <input 
               onChange={handleChange}
               className="form-field-spacing input" 
-              type="text" 
+              type="email" 
               name="email" 
               placeholder='Email Address'/>
             <label htmlFor="password">Password</label>
