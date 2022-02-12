@@ -12,7 +12,6 @@ function Login() {
   }
 
   const [formData, setFormData] = React.useState(initialState)
-  const [formErrors, setFormErrors] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
 
   const handleSubmit = async (e) => {
@@ -31,7 +30,7 @@ function Login() {
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
-    setFormErrors({ ...formErrors, [e.target.name]: e.target.value })
+    setIsError(false)
   }
 
   return (
@@ -40,7 +39,7 @@ function Login() {
         <div className="banner-left">
         </div>
         <div className="login-content-wrap">
-          <h1>Login</h1>
+          <h1>Home Game Tracker</h1>
           <form onSubmit={handleSubmit} className="form-wrap">
             <label htmlFor="email">Email Address</label>
             <input 
@@ -60,12 +59,19 @@ function Login() {
               className="form-field-spacing" 
               type="submit" 
               value="Submit"/>
+            <div className="link-text">
+              <p>Not registered? Sign up here</p>
+              <p>I'm just looking, thanks</p>
+              {isError ? <p className='err'>Either email or password were incorrect</p> : <p className='err'></p>}
+
+          </div>
           </form>
-          {isError ? <p>Either email or password were incorrect</p> : <p></p>}
+
+          
+          
         </div>
       </div>
     </>
-
   )
 }
 
