@@ -4,7 +4,7 @@ import { getPayLoad } from '../../lib/auth'
 import { statify } from '../../lib/helpers'
 
 function Dashboard() {
-    const [userId, setUserId] = React.useState(null)
+  const [userId, setUserId] = React.useState(null)
 
   const getUser = async () => {
     const payLoad = getPayLoad()
@@ -25,7 +25,7 @@ function Dashboard() {
     }
     getData()
   })
-  
+
   return <h1>Dashboard</h1>
 }
 
