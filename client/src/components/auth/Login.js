@@ -35,9 +35,6 @@ function Login() {
 
   return (
     <>
-      <div className="login-wrap">
-        <div className="banner-left">
-        </div>
         <div className="login-content-wrap">
           <h1>Home Game Tracker</h1>
           <form onSubmit={handleSubmit} className="form-wrap">
@@ -63,14 +60,9 @@ function Login() {
               <p>Not registered? Sign up here</p>
               <p>I'm just looking, thanks</p>
               {isError ? <p className='err'>Either email or password were incorrect</p> : <p className='err'></p>}
-
-          </div>
+            </div>
           </form>
-
-          
-          
         </div>
-      </div>
     </>
   )
 }

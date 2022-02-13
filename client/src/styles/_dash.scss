@@ -1,0 +1,14 @@
+.dash-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: auto auto;
+}
+
+.content-wrap {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}

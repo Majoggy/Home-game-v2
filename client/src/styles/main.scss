@@ -1,8 +1,14 @@
-// Login
+// Custom Colours
+
+$deep-red: #da5b52;
+$muted-red: #dd746c;
+$light-pink: #fcd9d9;
+
+@import "_login.scss";
+@import "_dash.scss";
 
 body {
   margin: 0;
-  overflow: hidden;
 }
 
 * {
@@ -10,133 +16,4 @@ body {
     Arial, sans-serif;
   font-weight: 300;
   margin: 0;
-}
-
-.login-wrap {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgb(255, 255, 255);
-  margin: auto auto;
-}
-
-.banner-left {
-  background-color: #dd746c;
-  width: 12%;
-  height: auto;
-  min-height: 100%;
-  position: relative;
-}
-
-.login-content-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  margin: 0 auto;
-  padding: 10px;
-
-  h1,
-  p {
-    margin: 10px;
-  }
-
-  h1 {
-    font-weight: 500;
-    font-size: 4rem;
-    margin-bottom: 20px;
-  }
-
-  label,
-  input {
-    font-weight: 350;
-  }
-}
-
-.form-field-spacing {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 50%;
-  min-width: 200px;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.form-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 10px;
-}
-
-input {
-  padding: 15px;
-  height: 50px;
-  background-color: #fcd9d9;
-  border: none;
-  transition: 0.5s;
-}
-
-input[type="submit"] {
-  background-color: #dd746c;
-  color: white;
-}
-
-input[type="submit"]:active {
-  border-radius: 1px;
-  border-bottom: black 2px solid;
-  transition: 0.3;
-  background-color: #da5b52;
-}
-
-input[type="submit"]:active::-webkit-input-placeholder {
-  color: white;
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus {
-  background-color: #dd746c;
-  outline: none;
-  color: white;
-}
-
-input:focus::-webkit-input-placeholder {
-  color: white;
-}
-
-.link-text {
-  width: 50%;
-  min-width: 200px;
-
-  .err {
-    font-style: normal;
-    margin-right: 5px;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 350;
-    height: 20px;
-  }
-
-  p {
-    font-style: italic;
-    font-size: smaller;
-    margin: 5px;
-    text-align: right;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .login-content-wrap {
-    h1 {
-      font-size: 42px;
-    }
-
-    label,
-    .err,
-    p,
-    input::-webkit-input-placeholder {
-      font-size: smaller;
-    }
-  }
 }

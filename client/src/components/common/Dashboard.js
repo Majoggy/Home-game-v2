@@ -4,14 +4,17 @@ import { getPayLoad } from '../../lib/auth'
 import { statify } from '../../lib/helpers'
 
 function Dashboard() {
-  const [userId, setUserId] = React.useState(null)
+    const [userId, setUserId] = React.useState(null)
+
+  const getUser = async () => {
+    const payLoad = getPayLoad()
+    setUserId(payLoad.sub)
+  }
 
   React.useEffect(() => {
     const getData = async () => {
-      try {
-        const payLoad = getPayLoad()
-        const user = payLoad.sub
-        setUserId(user)
+      try { 
+        await getUser()
         const response = await profileUser(userId)
         const userData = response.data
         console.log(userData)
@@ -22,10 +25,8 @@ function Dashboard() {
     }
     getData()
   })
-
-  return (
-    <h1>Dashboard tho</h1>
-  )
+  
+  return <h1>Dashboard</h1>
 }
 
 export default Dashboard
