@@ -4,7 +4,7 @@ import Pages from './Pages'
 
 function Layout() {
   return (
-    <div className="dash-wrap">
+    <div className="screen-wrap">
       <Nav/>
       <div className="content-wrap">
         <Pages/>

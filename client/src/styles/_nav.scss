@@ -1,0 +1,27 @@
+.home-icon {
+  width: 60%;
+  height: auto;
+  max-width: 75px;
+  max-height: 75px;
+  margin: 20px;
+}
+
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.nav-bar {
+  background-color: $muted-red;
+  width: 12%;
+  max-width: 160px;
+  height: auto;
+  min-height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
