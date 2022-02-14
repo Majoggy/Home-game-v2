@@ -1,16 +1,17 @@
 import React from 'react'
-import house from '../../images/house.png'
+import Home from '../../images/house.png'
 
-function Nav() {
+function Nav({ loggedIn }) {
   return (
     <div className="nav-bar">
+      {loggedIn &&
       <div className='logo-wrap'>
-        <img className="home-icon" src={house} alt="Logo" />
-        <img className="home-icon" src={house} alt="Logo" />
-        <img className="home-icon" src={house} alt="Logo" />
-        <img className="home-icon" src={house} alt="Logo" />
-        <img className="home-icon" src={house} alt="Logo" />
-      </div>
+        <img className="home-icon" src={Home} alt="Home"/>
+        <img className="home-icon" src={Home} alt="Home"/>
+        <img className="home-icon" src={Home} alt="Home"/>
+        <img className="home-icon" src={Home} alt="Home"/>
+        <img className="home-icon" src={Home} alt="Home"/>
+      </div>}
     </div>
   )
 }
