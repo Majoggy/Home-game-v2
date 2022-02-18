@@ -30,32 +30,31 @@ function Dashboard() {
 
   return (
     <>
-        {stats ? <h1>{stats[0].name}</h1> : <h1>no stats</h1>}
-        <table>
-  <tr>
-    <th>Name</th>
-    <th>Games Played</th>
-    <th>Top Two Percentage</th>
-    <th>Total Won</th>
-    <th>Total Spent</th>
-    <th>Profit/loss</th>
-    <th>Per game</th>
-  </tr>
-  {stats && stats.map(player =>
-                <tr key={player.name}>
-                  <td>{player.name}</td>
-                  <td>{player.gamesPlayed === 0 ? '-' : player.gamesPlayed}</td>
-                  <td>{player.topTwoPercentage}</td>
-                  <td>{player.winnings ? `£${player.winnings}` : '-'}</td>
-                  <td>{player.losses ? `£${player.losses}` : '-'}</td>
-                  <td>{player.total}</td>
-                  <td>{player.average}</td>
-                </tr>
-              )}
-</table>
+      {stats ? <h1>{stats[0].name}</h1> : <h1>no stats</h1>}
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Games Played</th>
+          <th>Top Two Percentage</th>
+          <th>Total Won</th>
+          <th>Total Spent</th>
+          <th>Profit/loss</th>
+          <th>Per game</th>
+        </tr>
+        {stats && stats.map(player =>
+          <tr key={player.name}>
+            <td>{player.name}</td>
+            <td>{player.gamesPlayed === 0 ? '-' : player.gamesPlayed}</td>
+            <td>{player.topTwoPercentage}</td>
+            <td>{player.winnings ? `£${player.winnings}` : '-'}</td>
+            <td>{player.losses ? `£${player.losses}` : '-'}</td>
+            <td>{player.total}</td>
+            <td>{player.average}</td>
+          </tr>
+        )}
+      </table>
     </>
   )
-
 }
 
 export default Dashboard
