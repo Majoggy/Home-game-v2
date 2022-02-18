@@ -29,8 +29,7 @@ function Dashboard() {
   },[])
 
   return (
-    <>
-      {stats ? <h1>{stats[0].name}</h1> : <h1>no stats</h1>}
+    <div className='content-wrap'>
       <table>
         <tr>
           <th>Name</th>
@@ -53,7 +52,7 @@ function Dashboard() {
           </tr>
         )}
       </table>
-    </>
+    </div>
   )
 }
 
