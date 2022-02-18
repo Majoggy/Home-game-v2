@@ -11,17 +11,33 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 100vh;
+  height: 85vh;
 }
 
 .nav-bar {
   background-color: $muted-red;
-  width: 12%;
-  max-width: 160px;
-  height: auto;
+  width: 160px;
   min-height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .nav-bar {
+    width: 100px;
+    .logo-wrap {
+      height: 65vh;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-bar {
+    width: 50px;
+  }
+  .logo-wrap {
+    height: 75vh;
+  }
 }
