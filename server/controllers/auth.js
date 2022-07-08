@@ -2,7 +2,7 @@ import User from '../models/user.js'
 import { Unauthorized, NotFound } from '../lib/errors.js'
 import jwt from 'jsonwebtoken'
 import { secret } from '../config/environment.js'
-
+import statify from '../config/helpers.js'
 
 // * Routing Middleware
 
@@ -24,7 +24,9 @@ async function loginUser(req, res, next) {
       throw new Unauthorized()
     }
 
-    const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '7 days' })
+    const token = jwt.sign({ sub: userToLogin._id }, secret, {
+      expiresIn: '7 days',
+    })
 
     return res.status(202).json({
       message: `Welcome back ${userToLogin.name}!`,
@@ -35,7 +37,7 @@ async function loginUser(req, res, next) {
   }
 }
 
-async function userIndex (_req, res, next) {
+async function userIndex(_req, res, next) {
   try {
     const users = await User.find()
     return res.status(200).json(users)
@@ -44,15 +46,26 @@ async function userIndex (_req, res, next) {
   }
 }
 
-async function profile (req, res, next) {
+async function profile(req, res, next) {
   try {
+    let statistics = []
     const { currentUserId } = req
-    const user = await User.findById(currentUserId)
+
+    let user = await User.findById(currentUserId)
       .populate('addedGames')
       .populate('addedPlayers')
 
     if (!user) throw new NotFound()
-    return res.status(200).json(user)
+
+    // Generate statistics if possible
+    if (user.addedGames.length > 0 && user.addedPlayers.length > 0) {
+      statistics = statify(user)
+    }
+
+    // Convert to object to merge with stats
+    user = user.toObject()
+
+    return res.status(200).json({ ...user, statistics })
   } catch (err) {
     next(err)
   }

@@ -20,8 +20,8 @@ userSchema
   })
   .get(function (addedPlayers) {
     if (!addedPlayers) return
-    
-    return addedPlayers.map(player => {
+
+    return addedPlayers.map((player) => {
       return {
         _id: player._id,
         name: player.name,
@@ -36,9 +36,9 @@ userSchema
     foreignField: 'userId',
   })
   .get(function (addedGames) {
-    if (!addedGames) return 
+    if (!addedGames) return
 
-    return addedGames.map(game => {
+    return addedGames.map((game) => {
       return {
         _id: game._id,
         firstPlace: game.firstPlace,
@@ -68,40 +68,46 @@ userSchema.set('toJSON', {
   },
 })
 
+userSchema.set('toObject', {
+  virtuals: true,
+  transform(_doc, json) {
+    delete json.password
+    return json
+  },
+})
+
 //  Create virtual field for password validation
 
-userSchema
-  .virtual('passwordConfirmation')
-  .set(function(passwordConfirmation) {
-    this._passwordConfirmation = passwordConfirmation
-  })
+userSchema.virtual('passwordConfirmation').set(function (passwordConfirmation) {
+  this._passwordConfirmation = passwordConfirmation
+})
 
-// Pre-validation for validating password 
+// Pre-validation for validating password
 
-userSchema
-  .pre('validate', function(next) {
-    if (this.isModified('password') && this.password !== this._passwordConfirmation) {
-      this.invalidate('passwordConfirmation', 'does not match')
-    }
-    next()
-  })
+userSchema.pre('validate', function (next) {
+  if (
+    this.isModified('password') &&
+    this.password !== this._passwordConfirmation
+  ) {
+    this.invalidate('passwordConfirmation', 'does not match')
+  }
+  next()
+})
 
 // Pre-validation for encrypting password using bcrypt
 
-userSchema
-  .pre('validate', function(next) {
-    if (this.isModified('password')) {
-      this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
-    }
-    next()
-  })
+userSchema.pre('validate', function (next) {
+  if (this.isModified('password')) {
+    this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
+  }
+  next()
+})
 
 // Compares hashed password to input password and returns true or false
 
-userSchema
-  .methods.validatePassword = function(password) {
-    return bcrypt.compareSync(password, this.password)
-  }
+userSchema.methods.validatePassword = function (password) {
+  return bcrypt.compareSync(password, this.password)
+}
 
 // Plugin that adds error handling for unique values
 
