@@ -17,7 +17,7 @@ function Login() {
   const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
 
   const handleSubmit = async (e) => {
-    e.preventDefault() 
+    e.preventDefault()
     try {
       const { data } = await loginUser(formData)
       setToken(data.token)
@@ -28,7 +28,7 @@ function Login() {
     }
   }
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setIsError(false)
   }
@@ -40,42 +40,44 @@ function Login() {
   //     }
   //   }
   //   redirect()
-  // })  
+  // })
 
   return (
     <>
-      <div className="nav-bar">
+      <div className="nav-bar"></div>
+      {/* <div className="wrap"> */}
+      <div className="login-content-wrap">
+        <h1>Home Game Tracker</h1>
+        <form onSubmit={handleSubmit} className="form-wrap">
+          <label htmlFor="email">Email Address</label>
+          <input
+            onChange={handleChange}
+            className="form-field-spacing input"
+            type="email"
+            name="email"
+            placeholder="Email Address"
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={handleChange}
+            className="form-field-spacing input"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          <input className="form-field-spacing" type="submit" value="Submit" />
+          <div className="link-text">
+            <p>Not registered? Sign up here</p>
+            <p>I&apos;m just looking, thanks</p>
+            {isError ? (
+              <p className="err">Either email or password were incorrect</p>
+            ) : (
+              <p className="err"></p>
+            )}
+          </div>
+        </form>
       </div>
-      <div className='wrap'>
-        <div className="login-content-wrap">
-          <h1>Home Game Tracker</h1>
-          <form onSubmit={handleSubmit} className="form-wrap">
-            <label htmlFor="email">Email Address</label>
-            <input 
-              onChange={handleChange}
-              className="form-field-spacing input" 
-              type="email" 
-              name="email" 
-              placeholder='Email Address'/>
-            <label htmlFor="password">Password</label>
-            <input 
-              onChange={handleChange}
-              className="form-field-spacing input" 
-              type="password" 
-              name="password" 
-              placeholder='Password'/>
-            <input 
-              className="form-field-spacing" 
-              type="submit" 
-              value="Submit"/>
-            <div className="link-text">
-              <p>Not registered? Sign up here</p>
-              <p>I&apos;m just looking, thanks</p>
-              {isError ? <p className='err'>Either email or password were incorrect</p> : <p className='err'></p>}
-            </div>
-          </form>
-        </div>
-      </div>
+      {/* </div> */}
     </>
   )
 }

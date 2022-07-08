@@ -15,7 +15,7 @@ function Dashboard() {
 
   React.useEffect(() => {
     const getData = async () => {
-      try { 
+      try {
         await getUser()
         const response = await profileUser(userId)
         const data = response.data
@@ -26,10 +26,11 @@ function Dashboard() {
       }
     }
     getData()
-  },[])
+  }, [])
 
   return (
-    <div className='content-wrap'>
+    <div className="content-wrap">
+      <div className="game-list"></div>
       <table>
         <tr>
           <th>Name</th>
@@ -40,17 +41,18 @@ function Dashboard() {
           <th>Profit/loss</th>
           <th>Per game</th>
         </tr>
-        {stats && stats.map(player =>
-          <tr key={player.name}>
-            <td>{player.name}</td>
-            <td>{player.gamesPlayed === 0 ? '-' : player.gamesPlayed}</td>
-            <td>{player.topTwoPercentage}</td>
-            <td>{player.winnings ? `£${player.winnings}` : '-'}</td>
-            <td>{player.losses ? `£${player.losses}` : '-'}</td>
-            <td>{player.total}</td>
-            <td>{player.average}</td>
-          </tr>
-        )}
+        {stats &&
+          stats.map((player) => (
+            <tr key={player.name}>
+              <td>{player.name}</td>
+              <td>{player.gamesPlayed === 0 ? '-' : player.gamesPlayed}</td>
+              <td>{player.topTwoPercentage}</td>
+              <td>{player.winnings ? `£${player.winnings}` : '-'}</td>
+              <td>{player.losses ? `£${player.losses}` : '-'}</td>
+              <td>{player.total}</td>
+              <td>{player.average}</td>
+            </tr>
+          ))}
       </table>
     </div>
   )
