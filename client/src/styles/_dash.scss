@@ -1,86 +1,86 @@
-// th {
-//   text-align: left;
-//   font-weight: bold;
-//   height: 50px;
-// }
+// // th {
+// //   text-align: left;
+// //   font-weight: bold;
+// //   height: 50px;
+// // }
 
-// td {
-//   text-align: left;
+// // td {
+// //   text-align: left;
+// // }
+
+// // table {
+// //   border: 1px solid;
+// // }
+
+// .content-wrap {
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   // padding: 5px;
+//   flex-wrap: wrap;
+//   // align-items: center;
+//   align-content: center;
+//   justify-content: center;
 // }
 
 // table {
-//   border: 1px solid;
+//   // border-collapse: collapse;
+//   border: 0.5px solid rgb(230, 230, 230);
+//   border-radius: 8px;
+//   border-spacing: 0;
+//   font-size: smaller;
+//   padding: 5px;
 // }
 
-.content-wrap {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  // padding: 5px;
-  flex-wrap: wrap;
-  // align-items: center;
-  align-content: center;
-  justify-content: center;
-}
+// td,
+// th {
+//   padding: 6px;
+//   text-align: center;
+// }
 
-table {
-  // border-collapse: collapse;
-  border: 0.5px solid rgb(230, 230, 230);
-  border-radius: 8px;
-  border-spacing: 0;
-  font-size: smaller;
-  padding: 5px;
-}
+// tr:nth-child(even) {
+//   background-color: #f2f2f2;
+// }
 
-td,
-th {
-  padding: 6px;
-  text-align: center;
-}
+// tr:hover {
+//   background-color: #ddd;
+// }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+// th {
+//   padding-top: 8px;
+//   padding-bottom: 8px;
+//   background-color: $muted-red;
+//   color: white;
+// }
 
-tr:hover {
-  background-color: #ddd;
-}
+// table th:first-child {
+//   border-radius: 8px 0 0 0;
+// }
 
-th {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background-color: $muted-red;
-  color: white;
-}
+// table th:last-child {
+//   border-radius: 0 8px 0 0;
+// }
 
-table th:first-child {
-  border-radius: 8px 0 0 0;
-}
+// .game-list {
+//   background-color: grey;
+//   width: 595px;
+//   height: 201px;
+//   border-radius: 8px;
+//   padding: 5px;
+//   border: 0.5px solid rgb(230, 230, 230);
+//   margin: 5px;
+//   border-radius: 8px;
+//   border-spacing: 0;
+// }
 
-table th:last-child {
-  border-radius: 0 8px 0 0;
-}
+// // @media only screen and (max-width: 900px) {
+// //   table {
+// //     font-size: smaller;
+// //   }
+// // }
 
-.game-list {
-  background-color: grey;
-  width: 595px;
-  height: 201px;
-  border-radius: 8px;
-  padding: 5px;
-  border: 0.5px solid rgb(230, 230, 230);
-  margin: 5px;
-  border-radius: 8px;
-  border-spacing: 0;
-}
-
-// @media only screen and (max-width: 900px) {
+// @media only screen and (max-width: 600px) {
 //   table {
-//     font-size: smaller;
+//     font-size: x-small;
 //   }
 // }
-
-@media only screen and (max-width: 600px) {
-  table {
-    font-size: x-small;
-  }
-}

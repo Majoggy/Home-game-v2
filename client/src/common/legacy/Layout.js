@@ -6,9 +6,9 @@ function Layout() {
   // const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
 
   return (
-    <div className="screen-wrap">
-      <Pages/>
-    </div>
+    // <div className="screen-wrap">
+    <Pages />
+    // </div>
   )
 }
 

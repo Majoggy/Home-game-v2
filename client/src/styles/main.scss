@@ -4,35 +4,35 @@ $deep-red: #da5b52;
 $muted-red: #dd746c;
 $light-pink: #fcd9d9;
 
-@import "_login.scss";
-@import "_nav.scss";
-@import "_dash.scss";
+@import '_login.scss';
+@import '_nav.scss';
+@import '_dash.scss';
 
 body {
   margin: 0;
 }
 
 * {
-  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', Helvetica,
     Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0;
 }
 
-// Flexboxes for main content
+// // Flexboxes for main content
 
-.screen-wrap {
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-  width: 100vw;
-  margin: auto auto;
-}
+// .screen-wrap {
+//   display: flex;
+//   flex-direction: row;
+//   height: 100vh;
+//   width: 100vw;
+//   margin: auto auto;
+// }
 
-.wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
+// .wrap {
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+// }

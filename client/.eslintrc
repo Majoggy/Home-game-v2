@@ -6,14 +6,12 @@
     "es6": true,
     "node": true
   },
-  "plugins": [
-    "react",
-    "jsx-a11y"
-  ],
+  "plugins": ["react", "jsx-a11y"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:prettier:recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -31,10 +29,7 @@
         "properties": "never"
       }
     ],
-    "func-call-spacing": [
-      "error",
-      "never"
-    ],
+    "func-call-spacing": ["error", "never"],
     "keyword-spacing": [
       "error",
       {
@@ -47,14 +42,11 @@
         "int32Hint": false
       }
     ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
+    "object-curly-spacing": ["error", "always"],
     "eqeqeq": "warn",
     "indent": [
       "error",
-      2,
+      "tab",
       {
         "SwitchCase": 1
       }
@@ -68,14 +60,8 @@
     "no-console": "off",
     "no-fallthrough": "warn",
     "prefer-const": "error",
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "never"
-    ],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
     "comma-dangle": [
       "error",
       {
@@ -86,9 +72,15 @@
         "functions": "never"
       }
     ],
-    "react/prop-types": [
-      0
+    "object-curly-newline": [
+      "error",
+      {
+        "multiline": "true",
+        "ImportDeclaration": "never",
+        "ExportDeclaration": "never"
+      }
     ],
+    "react/prop-types": [0],
     "react/react-in-jsx-scope": "off"
   }
 }
