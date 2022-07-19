@@ -12,22 +12,24 @@ export const Navbar = () => (
   <>
     <NavWrapper>
       <MenuWrapper>
-        {menuItems.map((item) => (
+        {/* {menuItems.map((item) => (
           <MenuItem key={item.name} name={item.name} link={item.link} />
-        ))}
+        ))} */}
       </MenuWrapper>
     </NavWrapper>
   </>
 )
 
-export const MenuItem = ({ name, link }) => <MenuItemTitle>{name}</MenuItemTitle>
+export const MenuItem = ({ name, link }) => (
+  <MenuItemTitle>{name}</MenuItemTitle>
+)
 
 const NavWrapper = styled.div`
   width: 160px;
   height: 100vh;
   display: flex;
   background-color: #dd746c;
-  border-right: 2px solid black;
+  /* border-right: 2px solid black; */
   @media only screen and (min-width: 2000px) {
     width: 250px;
   }
@@ -50,7 +52,7 @@ const MenuItemTitle = styled.div`
   width: 85%;
   text-align: center;
   border-radius: 3px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   @media only screen and (min-width: 2000px) {
     /* margin: 16px; */
     padding: 12px;

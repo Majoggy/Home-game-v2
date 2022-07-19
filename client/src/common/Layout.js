@@ -11,9 +11,7 @@ function Layout() {
     <>
       <ScreenWrap>
         <Navbar />
-        <ContentWrap>
-          <Pages />
-        </ContentWrap>
+        <Pages />
       </ScreenWrap>
     </>
   )

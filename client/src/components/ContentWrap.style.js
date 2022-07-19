@@ -1,25 +1,23 @@
 import styled from 'styled-components'
 
-// export const ContentWrap = styled.div`
-//   width: 100%;
-//   padding-left: 200px;
-//   padding-right: 200px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background-color: white;
-// `
+export const ContentWrap = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #ffedeb;
+`
 
-// export const CenteredContent = styled.div`
-//   width: 1100px;
-//   margin-top: 30px;
-//   overflow: visible;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// `
-// export const ScreenWrap = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-// `
+export const ContentWrapLogin = styled.div`
+  margin-top: 80px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #ffedeb;
+`
