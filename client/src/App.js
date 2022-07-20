@@ -1,8 +1,8 @@
 import React from 'react'
-import Layout from './common/Layout'
+import Pages from './common/Pages'
 
 function App() {
-  return <Layout />
+  return <Pages />
 }
 
 export default App

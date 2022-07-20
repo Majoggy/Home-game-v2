@@ -2,7 +2,7 @@ import React from 'react'
 import { loginUser } from '../lib/api'
 import { setToken } from '../lib/auth'
 import { useNavigate } from 'react-router-dom'
-// import { isAuthenticated } from '../../lib/auth'
+import { isAuthenticated } from '../lib/auth'
 import styled from 'styled-components'
 import { ContentWrapLogin } from '../components/ContentWrap.style'
 
@@ -16,7 +16,7 @@ function Login() {
 
   const [formData, setFormData] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
-  // const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
+  const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -67,12 +67,8 @@ function Login() {
           <TextWrapper>
             <p>Not registered? Sign up here</p>
             <p>I&apos;m just looking, thanks</p>
-            {isError ? (
-              <ErrorText className="err">
-                Either email or password were incorrect
-              </ErrorText>
-            ) : (
-              <ErrorText className="err"></ErrorText>
+            {isError && (
+              <ErrorText>Either email or password were incorrect</ErrorText>
             )}
           </TextWrapper>
         </Form>
@@ -109,24 +105,42 @@ const Input = styled.input`
   width: 250px;
   background-color: #fcd9d9;
   border: none;
-  /* border: 2px solid black; */
+  border-bottom: 2px;
   border-radius: 2px;
   transition: 0.5s;
+
+  &:focus,
+  &:focus {
+    color: white;
+    background-color: #dd746c;
+    outline: none;
+    border-bottom: black 2px solid;
+
+    ::placeholder {
+      color: white;
+      opacity: 1;
+    }
+  }
 `
 
 const Submit = styled.input`
   margin: 10px;
   margin-top: 30px;
-  /* margin-left: auto;
-  margin-right: auto; */
   padding: 10px;
   height: 50px;
   width: 150px;
   background-color: #dd746c;
   color: white;
   border: none;
+  border-bottom: 2px solid;
   border-radius: 2px;
   transition: 0.5s;
+
+  &:active {
+    border-bottom: black 2px solid;
+    transition: 0.3;
+    background-color: #dd746c;
+  }
 `
 
 const ErrorText = styled.p`
