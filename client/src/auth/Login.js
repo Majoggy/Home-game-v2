@@ -37,7 +37,7 @@ function Login() {
 
   React.useEffect(() => {
     const redirect = () => {
-      isAuth ? navigate('/dashboard') : null
+      if (isAuth) navigate('/dashboard')
     }
     redirect()
   })

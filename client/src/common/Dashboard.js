@@ -1,10 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ContentWrap } from '../components/ContentWrap.style'
-// import { isAuthenticated } from '../../lib/auth'
+import { isAuthenticated } from '../lib/auth'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
-  // const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
+  const navigate = useNavigate()
+  const isAuth = isAuthenticated()
+
+  // This code works, but I'd rather use secure route
+  // React.useEffect(() => {
+  //   const redirect = () => {
+  //     if (!isAuth) navigate('/')
+  //   }
+  //   redirect()
+  // })
+
   return (
     <ContentWrap>
       <Spacer />
@@ -38,21 +49,18 @@ export const Spacer = styled.div`
 `
 
 export const Div1 = styled.div`
-  /* border: 2px solid black; */
   border-radius: 0.5rem;
   background-color: white;
   grid-area: 1 / 1 / 4 / 3;
 `
 
 export const Div2 = styled.div`
-  /* border: 2px solid black; */
   border-radius: 0.5rem;
   background-color: white;
   grid-area: 4 / 1 / 6 / 2;
 `
 
 export const Div3 = styled.div`
-  /* border: 2px solid black; */
   border-radius: 0.5rem;
   background-color: white;
   grid-area: 4 / 2 / 6 / 3;
