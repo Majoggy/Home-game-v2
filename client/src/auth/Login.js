@@ -8,6 +8,7 @@ import { ContentWrapLogin } from '../components/ContentWrap.style'
 
 function Login() {
   const navigate = useNavigate()
+  const isAuth = isAuthenticated()
 
   const initialState = {
     email: '',
@@ -16,7 +17,6 @@ function Login() {
 
   const [formData, setFormData] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
-  const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -35,14 +35,12 @@ function Login() {
     setIsError(false)
   }
 
-  // React.useEffect(() => {
-  //   const redirect = () => {
-  //     if (loggedIn) {
-  //       navigate('/dashboard')
-  //     }
-  //   }
-  //   redirect()
-  // })
+  React.useEffect(() => {
+    const redirect = () => {
+      isAuth ? navigate('/dashboard') : null
+    }
+    redirect()
+  })
 
   return (
     <ContentWrapLogin>
@@ -99,6 +97,7 @@ const Label = styled.label`
 
 const Input = styled.input`
   margin: 10px;
+  margin-left: 7px;
   padding: 10px;
   padding-left: 25px;
   height: 30px;

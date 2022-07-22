@@ -1,43 +1,40 @@
 import styled from 'styled-components'
 import React from 'react'
-import { isAuthenticated } from '../lib/auth'
-import { useLocation } from 'react-router-dom'
-
-const menuItems = [
-  { name: 'Dashboard', link: 'dashboard' },
-  { name: 'Add Player', link: 'addPlayer' },
-  { name: 'Add Game', link: 'addGame' },
-  { name: 'Log Out', link: 'logOut' },
-]
+import { isAuthenticated, removeToken } from '../lib/auth'
+import { Link, useLocation } from 'react-router-dom'
 
 export const Navbar = () => {
   const isAuth = isAuthenticated()
-
   useLocation()
+
+  const handleLogout = () => {
+    removeToken()
+  }
+
   return (
-    <>
-      <NavWrapper>
-        <MenuWrapper>
-          {isAuth &&
-            menuItems.map((item) => (
-              <MenuItem key={item.name} name={item.name} link={item.link} />
-            ))}
-        </MenuWrapper>
-      </NavWrapper>
-    </>
+    <NavWrapper>
+      <MenuWrapper>
+        {isAuth && (
+          <>
+            <MenuItem to="/dashboard">Dashboard</MenuItem>
+            <MenuItem to="/addPlayer">Add Player</MenuItem>
+            <MenuItem to="/addGame">Add Game</MenuItem>
+            <MenuItem to="/" onClick={handleLogout}>
+              Log Out
+            </MenuItem>
+          </>
+        )}
+      </MenuWrapper>
+    </NavWrapper>
   )
 }
-
-export const MenuItem = ({ name, link }) => (
-  <MenuItemTitle>{name}</MenuItemTitle>
-)
 
 const NavWrapper = styled.div`
   width: 160px;
   height: 100vh;
   display: flex;
   background-color: #dd746c;
-  /* border-right: 2px solid black; */
+
   @media only screen and (min-width: 2000px) {
     width: 250px;
   }
@@ -53,14 +50,16 @@ const MenuWrapper = styled.div`
   align-items: center;
 `
 
-const MenuItemTitle = styled.div`
+const MenuItem = styled(Link)`
   margin: 8px;
   padding: 10px;
   background-color: white;
+  color: black;
   width: 85%;
   text-align: center;
   border-radius: 3px;
-  /* border: 2px solid black; */
+  text-decoration: none;
+
   @media only screen and (min-width: 2000px) {
     /* margin: 16px; */
     padding: 12px;
