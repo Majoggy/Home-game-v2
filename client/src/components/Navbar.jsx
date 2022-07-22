@@ -11,14 +11,14 @@ const menuItems = [
 ]
 
 export const Navbar = () => {
-  const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
+  const isAuth = isAuthenticated()
 
   useLocation()
   return (
     <>
       <NavWrapper>
         <MenuWrapper>
-          {loggedIn &&
+          {isAuth &&
             menuItems.map((item) => (
               <MenuItem key={item.name} name={item.name} link={item.link} />
             ))}
