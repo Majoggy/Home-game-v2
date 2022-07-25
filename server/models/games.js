@@ -2,15 +2,27 @@ import mongoose from 'mongoose'
 import mongooseUniqueValidator from 'mongoose-unique-validator'
 
 const gameSchema = new mongoose.Schema({
-  firstPlace: { type: String, required: true },
-  secondPlace: { type: String, required: true },
-  thirdPlace: { type: String, required: true },
-  fourthPlace: { type: String },
-  fifthPlace: { type: String },
-  sixthPlace: { type: String },
-  seventhPlace: { type: String },
-  eighthPlace: { type: String },
-  ninthPlace: { type: String },
+  firstPlace: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Players',
+    required: true,
+  },
+  secondPlace: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Players',
+    required: true,
+  },
+  thirdPlace: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Players',
+    required: true,
+  },
+  fourthPlace: { type: mongoose.Schema.ObjectId, ref: 'Players' },
+  fifthPlace: { type: mongoose.Schema.ObjectId, ref: 'Players' },
+  sixthPlace: { type: mongoose.Schema.ObjectId, ref: 'Players' },
+  seventhPlace: { type: mongoose.Schema.ObjectId, ref: 'Players' },
+  eighthPlace: { type: mongoose.Schema.ObjectId, ref: 'Players' },
+  ninthPlace: { type: mongoose.Schema.ObjectId, ref: 'Players' },
   buyIn: { type: Number, required: true },
   firstPrize: { type: Number, required: true },
   secondPrize: { type: Number, required: true },

@@ -10,7 +10,7 @@ async function registerUser(req, res, next) {
   try {
     const createdUser = await User.create(req.body)
     return res.status(201).json({
-      message: `Welcome ${createdUser.name}`,
+      message: `Welcome ${createdUser.firstName} ${createdUser.lastName}!`,
     })
   } catch (err) {
     next(err)
@@ -29,7 +29,7 @@ async function loginUser(req, res, next) {
     })
 
     return res.status(202).json({
-      message: `Welcome back ${userToLogin.name}!`,
+      message: `Welcome back ${userToLogin.firstName} ${userToLogin.lastName}!`,
       token,
     })
   } catch (err) {

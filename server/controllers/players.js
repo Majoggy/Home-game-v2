@@ -4,7 +4,7 @@ import { NotFound } from '../lib/errors.js'
 // * Routing middleware
 
 // Get all Players
-async function playerIndex (_req, res, next) {
+async function playerIndex(_req, res, next) {
   try {
     const players = await Players.find()
     return res.status(200).json(players)
@@ -14,10 +14,10 @@ async function playerIndex (_req, res, next) {
 }
 
 // Get single Player
-async function getSinglePlayer (req, res, next) {
+async function getSinglePlayer(req, res, next) {
   try {
     const { playerId } = req.params
-    const foundPlayer = await Players.findById(playerId).populate('userId')
+    const foundPlayer = await Players.findById(playerId).populate('addedBy')
     if (!foundPlayer) throw new NotFound()
     return res.status(200).json(foundPlayer)
   } catch (err) {
@@ -26,10 +26,16 @@ async function getSinglePlayer (req, res, next) {
 }
 
 // Create new player
-async function createPlayer (req, res, next) {
+async function createPlayer(req, res, next) {
   const { currentUser } = req
+  console.log(req.body)
+  console.log(currentUser.id)
   try {
-    const createdPlayer = await Players.create({ ...req.body, addedBy: currentUser })
+    const createdPlayer = await Players.create({
+      ...req.body,
+      addedBy: currentUser._id,
+    })
+    console.log(createdPlayer)
     return res.status(201).json(createdPlayer)
   } catch (err) {
     next(err)
@@ -37,7 +43,7 @@ async function createPlayer (req, res, next) {
 }
 
 // Edit single player
-async function editPlayer (req, res, next) {
+async function editPlayer(req, res, next) {
   try {
     const { playerId } = req.params
     const playerToUpdate = await Players.findById(playerId)
@@ -51,7 +57,7 @@ async function editPlayer (req, res, next) {
 }
 
 // Delete single player
-async function deletePlayer (req, res, next) {
+async function deletePlayer(req, res, next) {
   try {
     const { playerId } = req.params
     const playerToDelete = await Players.findByIdAndDelete(playerId)
@@ -63,11 +69,11 @@ async function deletePlayer (req, res, next) {
 }
 
 // Get player index created by User
-async function indexByUser (req, res, next) {
+async function indexByUser(req, res, next) {
   try {
     const { userId } = req.params
     const players = await Players.find({ userId })
-    if (!players || players.length < 1){
+    if (!players || players.length < 1) {
       throw new NotFound()
     }
     return res.status(200).json(players)
