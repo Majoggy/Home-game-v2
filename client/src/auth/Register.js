@@ -1,18 +1,18 @@
 import React from 'react'
-import { loginUser } from '../lib/api'
-import { setToken } from '../lib/auth'
+import { registerUser } from '../lib/api'
 import { useNavigate, Link } from 'react-router-dom'
-import { isAuthenticated } from '../lib/auth'
 import styled from 'styled-components'
 import { ContentWrapLogin } from '../components/ContentWrap.style'
 
-function Login() {
+function Register() {
   const navigate = useNavigate()
-  const isAuth = isAuthenticated()
 
   const initialState = {
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
+    passwordConfirmation: '',
   }
 
   const [formData, setFormData] = React.useState(initialState)
@@ -21,10 +21,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await loginUser(formData)
-      setToken(data.token)
-      console.log(data.message)
-      navigate('/dashboard')
+      await registerUser(formData)
+      navigate('/login')
     } catch (err) {
       setIsError(true)
     }
@@ -35,18 +33,25 @@ function Login() {
     setIsError(false)
   }
 
-  React.useEffect(() => {
-    const redirect = () => {
-      if (isAuth) navigate('/dashboard')
-    }
-    redirect()
-  })
-
   return (
     <ContentWrapLogin>
       <Wrapper>
         <Title>Home Game Tracker</Title>
         <Form onSubmit={handleSubmit}>
+          <Label htmlFor="firstName">First Name</Label>
+          <Input
+            onChange={handleChange}
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+          />
+          <Label htmlFor="lastName">Last Name</Label>
+          <Input
+            onChange={handleChange}
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+          />
           <Label htmlFor="email">Email Address</Label>
           <Input
             onChange={handleChange}
@@ -61,12 +66,15 @@ function Login() {
             name="password"
             placeholder="Password"
           />
+          <Label htmlFor="passwordConfirmation">Password</Label>
+          <Input
+            onChange={handleChange}
+            type="password"
+            name="passwordConfirmation"
+            placeholder="Password Confirmation"
+          />
           <Submit type="submit" value="Submit" />
           <TextWrapper>
-            <p>
-              Not registered? Sign up <TextLink to="/register">here</TextLink>
-            </p>
-            <p>I&apos;m just looking, thanks</p>
             {isError && (
               <ErrorText>Either email or password were incorrect</ErrorText>
             )}
@@ -77,7 +85,7 @@ function Login() {
   )
 }
 
-export default Login
+export default Register
 
 const Wrapper = styled.div``
 

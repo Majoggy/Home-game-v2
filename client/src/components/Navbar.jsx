@@ -31,7 +31,7 @@ export const Navbar = () => {
 
 const NavWrapper = styled.div`
   width: 160px;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   background-color: #dd746c;
 

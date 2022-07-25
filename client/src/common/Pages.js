@@ -4,6 +4,7 @@ import Login from '../auth/Login'
 import Dashboard from './Dashboard'
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
+import Register from '../auth/Register'
 
 function Pages() {
   return (
@@ -12,6 +13,7 @@ function Pages() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           {/* <Route path="/two" element={<Two/>}/>
         <Route path="/three" element={<Three/>}/>
@@ -38,6 +40,7 @@ const ContentWrap = styled.div`
 export const ScreenWrap = styled.div`
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   display: flex;
   background-color: #ffedeb;
 `
