@@ -124,10 +124,11 @@ const TextLink = styled(Link)`
 
 const Label = styled.label`
   margin: 7px;
-  font-size: 11px;
+  font-size: 12px;
 `
 
 const Input = styled.input`
+  font-size: 12px;
   margin: 8px;
   margin-left: 7px;
   padding: 8px;
