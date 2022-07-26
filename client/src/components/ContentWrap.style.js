@@ -13,7 +13,7 @@ export const ContentWrap = styled.div`
 
 export const ContentWrapLogin = styled.div`
   margin-top: 80px;
-  width: 75%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
