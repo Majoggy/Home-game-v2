@@ -2,7 +2,7 @@ import React from 'react'
 import { registerUser } from '../lib/api'
 import { useNavigate, Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { ContentWrapLogin } from '../components/ContentWrap.style'
+import { ContentWrapRegister } from '../components/ContentWrap.style'
 
 function Register() {
   const navigate = useNavigate()
@@ -16,25 +16,30 @@ function Register() {
   }
 
   const [formData, setFormData] = React.useState(initialState)
+  const [formErrors, setFormErrors] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       await registerUser(formData)
-      navigate('/login')
+      navigate('/')
     } catch (err) {
+      // console.log(e.response.data)
+      setFormErrors(err.response.data)
+      console.log(formErrors)
       setIsError(true)
     }
   }
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    setFormErrors({ ...formErrors, [e.target.name]: '' })
     setIsError(false)
   }
 
   return (
-    <ContentWrapLogin>
+    <ContentWrapRegister>
       <Wrapper>
         <Title>Home Game Tracker</Title>
         <Subtitle>Create a new account</Subtitle>
@@ -43,6 +48,7 @@ function Register() {
             <Label htmlFor="firstName">First Name</Label>
             <Input
               onChange={handleChange}
+              validationFailed={formErrors.firstName}
               type="text"
               name="firstName"
               placeholder="First Name"
@@ -50,6 +56,7 @@ function Register() {
             <Label htmlFor="lastName">Last Name</Label>
             <Input
               onChange={handleChange}
+              validationFailed={formErrors.lastName}
               type="text"
               name="lastName"
               placeholder="Last Name"
@@ -57,6 +64,7 @@ function Register() {
             <Label htmlFor="email">Email Address</Label>
             <Input
               onChange={handleChange}
+              validationFailed={formErrors.email}
               type="email"
               name="email"
               placeholder="Email Address"
@@ -66,6 +74,7 @@ function Register() {
             <Label htmlFor="password">Password</Label>
             <Input
               onChange={handleChange}
+              validationFailed={formErrors.password}
               type="password"
               name="password"
               placeholder="Password"
@@ -73,20 +82,16 @@ function Register() {
             <Label htmlFor="passwordConfirmation">Password</Label>
             <Input
               onChange={handleChange}
+              validationFailed={formErrors.passwordConfirmation}
               type="password"
               name="passwordConfirmation"
               placeholder="Password Confirmation"
             />
             <Submit type="submit" value="Submit" />
-            <TextWrapper>
-              {isError && (
-                <ErrorText>Either email or password were incorrect</ErrorText>
-              )}
-            </TextWrapper>
           </Div>
         </Form>
       </Wrapper>
-    </ContentWrapLogin>
+    </ContentWrapRegister>
   )
 }
 
@@ -97,6 +102,7 @@ const Wrapper = styled.div``
 const Subtitle = styled.h2`
   font-size: 14px;
   margin: 8px;
+  margin-top: 10px;
   margin-bottom: 15px;
 `
 
@@ -116,12 +122,6 @@ const Div = styled.div`
   flex-direction: column;
 `
 
-const TextLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-  font-style: italic;
-`
-
 const Label = styled.label`
   margin: 7px;
   font-size: 12px;
@@ -136,8 +136,10 @@ const Input = styled.input`
   height: 20px;
   width: 200px;
   background-color: #fcd9d9;
-  border: none;
-  border-bottom: 2px;
+  border: ${(props) =>
+    props.validationFailed ? '2px red solid' : '2px solid transparent'};
+  border-bottom: ${(props) =>
+    props.validationFailed ? '2px red solid' : '2px solid transparent'};
   border-radius: 2px;
   transition: 0.5s;
   x &:focus,
@@ -156,7 +158,7 @@ const Input = styled.input`
 
 const Submit = styled.input`
   margin: 8px;
-  margin-top: 20px;
+  margin-top: 30px;
   padding: 8px;
   height: 40px;
   width: 110px;
@@ -172,15 +174,4 @@ const Submit = styled.input`
     transition: 0.3;
     background-color: #dd746c;
   }
-`
-
-const ErrorText = styled.p`
-  margin-top: 10px;
-`
-
-const TextWrapper = styled.div`
-  margin: 7px;
-  line-height: 14px;
-  font-size: 10px;
-  height: 100px;
 `
