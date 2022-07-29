@@ -6,21 +6,20 @@ import games from '../controllers/games.js'
 
 const router = express.Router()
 
-router.route('/games')
-  .get(games.index)
-  .post(secureRoute, games.create)
+router.route('/games').get(games.index).post(secureRoute, games.create)
 
-router.route('/games/:gameId')
+router
+  .route('/games/:gameId')
   .get(games.show)
   .put(secureRoute, games.update)
+  .delete(secureRoute, games.delete)
 
 router.get('/games/user/:userId', games.indexByUser)
 
-router.route('/players')
-  .get(players.index)
-  .post(secureRoute, players.create)
+router.route('/players').get(players.index).post(secureRoute, players.create)
 
-router.route('/players/:playerId')
+router
+  .route('/players/:playerId')
   .get(players.show)
   .put(secureRoute, players.update)
   .delete(players.delete)
@@ -32,7 +31,7 @@ router.get('/users', auth.index)
 router.get('/users/:userId', secureRoute, auth.profile)
 
 // Add secureRoute to all routes bar login & register
-// Like below - 
+// Like below -
 // .get(secureRoute, players.show)
 // .put(secureRoute, players.update)
 

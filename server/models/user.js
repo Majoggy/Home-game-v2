@@ -38,7 +38,6 @@ userSchema
   })
   .get(function (addedGames) {
     if (!addedGames) return
-
     return addedGames.map((game) => {
       return {
         _id: game._id,
