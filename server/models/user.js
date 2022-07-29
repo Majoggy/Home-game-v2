@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  password: { type: String, required: true },
+  password: { type: String, minlength: 1, required: true },
   avatar: { type: String, required: false },
   isAdmin: { type: Boolean, default: false },
 })
@@ -97,7 +97,7 @@ userSchema.pre('validate', function (next) {
 
 // Pre-validation for encrypting password using bcrypt
 
-userSchema.pre('validate', function (next) {
+userSchema.pre('save', function (next) {
   if (this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
   }
