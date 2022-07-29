@@ -18,16 +18,6 @@ async function getSingleGame(req, res, next) {
   try {
     const { gameId } = req.params
     const foundGame = await Games.findById(gameId)
-      .populate('userId')
-      .populate('firstPlace')
-      .populate('secondPlace')
-      .populate('thirdPlace')
-      .populate('fourthPlace')
-      .populate('fifthPlace')
-      .populate('sixthPlace')
-      .populate('seventhPlace')
-      .populate('eighthPlace')
-      .populate('ninthPlace')
     if (!foundGame) throw new NotFound()
     return res.status(200).json(foundGame)
   } catch (err) {
