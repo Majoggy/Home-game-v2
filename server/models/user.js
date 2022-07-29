@@ -86,11 +86,18 @@ userSchema.virtual('passwordConfirmation').set(function (passwordConfirmation) {
 // Pre-validation for validating password
 
 userSchema.pre('validate', function (next) {
+  if (this._passwordConfirmation === '') {
+    this.invalidate(
+      'passwordConfirmation',
+      '"Password Confirmation" is a required field!'
+    )
+  }
+
   if (
     this.isModified('password') &&
     this.password !== this._passwordConfirmation
   ) {
-    this.invalidate('passwordConfirmation', 'does not match')
+    this.invalidate('passwordConfirmation', 'Passwords do not match!')
   }
   next()
 })
