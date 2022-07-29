@@ -26,7 +26,7 @@ function Register() {
       navigate('/')
     } catch (err) {
       // console.log(e.response.data)
-      setFormErrors(err.response.data)
+      setFormErrors(err.response.data.errors)
       console.log(formErrors)
       setIsError(true)
     }
