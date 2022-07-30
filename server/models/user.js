@@ -19,6 +19,7 @@ userSchema
     localField: '_id',
     foreignField: 'userId',
   })
+
   .get(function (addedPlayers) {
     if (!addedPlayers) return
 
@@ -39,22 +40,7 @@ userSchema
   .get(function (addedGames) {
     if (!addedGames) return
     return addedGames.map((game) => {
-      return {
-        _id: game._id,
-        firstPlace: game.firstPlace,
-        secondPlace: game.secondPlace,
-        thirdPlace: game.thirdPlace,
-        fourthPlace: game.fourthPlace,
-        fifthPlace: game.fifthPlace,
-        sixthPlace: game.sixthPlace,
-        seventhPlace: game.seventhPlace,
-        eigthPlace: game.eigthPlace,
-        ninthPlace: game.ninthPlace,
-        buyIn: game.buyIn,
-        firstPrize: game.firstPrize,
-        secondPrize: game.secondPrize,
-        thirdPrize: game.thirdPrize,
-      }
+      return game.toJSON()
     })
   })
 

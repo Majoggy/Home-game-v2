@@ -52,8 +52,15 @@ async function profile(req, res, next) {
     const { currentUserId } = req
 
     let user = await User.findById(currentUserId)
-      .populate('addedGames')
       .populate('addedPlayers')
+      .populate([
+        {
+          path: 'addedGames',
+          populate: {
+            path: 'firstPlace secondPlace thirdPlace fourthPlace fifthPlace sixthPlace seventhPlace eighthPlace',
+          },
+        },
+      ])
 
     if (!user) throw new NotFound()
 

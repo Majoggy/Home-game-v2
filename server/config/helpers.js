@@ -8,15 +8,14 @@ export default function statify(data) {
     winnings: [],
     buyIns: [],
   }
-
+  // console.log(data.addedGames)
   data.addedPlayers.forEach((player) => {
     const name = player.name
     let playerObj = { name: name }
-
     data.addedGames.forEach((game) => {
       Object.entries(game).forEach((field) => {
         const [key, value] = field
-        if (value === name) {
+        if (value.name === name) {
           if (paidPlaces.includes(key)) {
             statObj.placings.push(key)
             if (key === paidPlaces[0]) {
