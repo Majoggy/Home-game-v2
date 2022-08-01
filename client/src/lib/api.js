@@ -22,8 +22,8 @@ export function registerUser(formData) {
 }
 
 // Profile View
-export function profileUser() {
-  return axios.get(`${baseUrl}/users/:userId`, headers())
+export function profileUser(userId) {
+  return axios.get(`${baseUrl}/users/${userId}`, headers())
 }
 
 // Get all users

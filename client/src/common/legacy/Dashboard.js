@@ -11,6 +11,7 @@ function Dashboard() {
   const getUser = async () => {
     const payLoad = getPayLoad()
     setUserId(payLoad.sub)
+    console.log(userId)
   }
 
   React.useEffect(() => {
