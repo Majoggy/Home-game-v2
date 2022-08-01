@@ -92,10 +92,11 @@ export const DesktopGrid = styled.div`
   grid-row-gap: 20px;
   min-height: 600px;
   margin: 20px;
-  max-height: 820px;
-  max-width: 1200px;
-  @media only screen and (max-width: 1445px) {
+  height: 820px;
+  width: 1200px;
+  @media only screen and (max-width: 2000px) {
     width: 800px;
+    height: 600px;
   }
 `
 
