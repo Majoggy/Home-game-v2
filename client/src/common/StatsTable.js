@@ -55,7 +55,8 @@ const Table = styled.table`
 const TableHead = styled.th`
   background-color: #dd746c;
   padding: 12px;
-
+  position: sticky;
+  top: 0;
   :first-of-type {
     border-top-left-radius: 0.4rem;
     padding-left: 20px;
@@ -67,9 +68,6 @@ const TableHead = styled.th`
 
 const TableRow = styled.tr`
   height: 100%;
-  /* :first-child {
-    background: #ff0;
-  } */
   :nth-child(2n + 3) {
     background: #fcd9d9;
   }
