@@ -40,7 +40,7 @@ function Register() {
 
   return (
     <ContentWrapRegister>
-      <Wrapper>
+      <div>
         <Title>Home Game Tracker</Title>
         <Subtitle>Create a new account</Subtitle>
         <Form onSubmit={handleSubmit}>
@@ -90,14 +90,12 @@ function Register() {
             <Submit type="submit" value="Submit" />
           </Div>
         </Form>
-      </Wrapper>
+      </div>
     </ContentWrapRegister>
   )
 }
 
 export default Register
-
-const Wrapper = styled.div``
 
 const Subtitle = styled.h2`
   font-size: 14px;

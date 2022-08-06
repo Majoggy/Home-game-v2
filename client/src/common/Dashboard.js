@@ -4,6 +4,7 @@ import { ContentWrap } from '../components/ContentWrap.style'
 import { isAuthenticated, getPayLoad } from '../lib/auth'
 import { useNavigate } from 'react-router-dom'
 import { profileUser } from '../lib/api'
+import StatsTable from '../common/StatsTable'
 
 function Dashboard() {
   const [userId, setUserId] = React.useState(null)
@@ -47,34 +48,7 @@ function Dashboard() {
       <Spacer />
       <DesktopGrid>
         <Div1>
-          <div className="content-wrap">
-            <div className="game-list"></div>
-            <table>
-              <tr>
-                <th>Name</th>
-                <th>Games Played</th>
-                <th>Top Two Percentage</th>
-                <th>Total Won</th>
-                <th>Total Spent</th>
-                <th>Profit/loss</th>
-                <th>Per game</th>
-              </tr>
-              {userInfo &&
-                userInfo.statistics.map((player) => (
-                  <tr key={player.name}>
-                    <td>{player.name}</td>
-                    <td>
-                      {player.gamesPlayed === 0 ? '-' : player.gamesPlayed}
-                    </td>
-                    <td>{player.topTwoPercentage}</td>
-                    <td>{player.winnings ? `£${player.winnings}` : '-'}</td>
-                    <td>{player.losses ? `£${player.losses}` : '-'}</td>
-                    <td>{player.total}</td>
-                    <td>{player.average}</td>
-                  </tr>
-                ))}
-            </table>
-          </div>
+          <StatsTable userInfo={userInfo} />
         </Div1>
         <Div2></Div2>
         <Div3></Div3>

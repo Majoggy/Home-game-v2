@@ -44,7 +44,7 @@ function Login() {
 
   return (
     <ContentWrapLogin>
-      <Wrapper>
+      <div>
         <Title>Home Game Tracker</Title>
         <Form onSubmit={handleSubmit}>
           <Label htmlFor="email">Email Address</Label>
@@ -72,14 +72,12 @@ function Login() {
             )}
           </TextWrapper>
         </Form>
-      </Wrapper>
+      </div>
     </ContentWrapLogin>
   )
 }
 
 export default Login
-
-const Wrapper = styled.div``
 
 const Title = styled.h1`
   font-size: 38px;
