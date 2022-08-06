@@ -45,6 +45,7 @@ const ContentWrap = styled.div``
 
 const Table = styled.table`
   width: 100%;
+  height: 95%;
   text-align: center;
   border-collapse: collapse;
 `
@@ -61,10 +62,19 @@ const TableHead = styled.th`
   }
 `
 
-const TableRow = styled.tr``
+const TableRow = styled.tr`
+  height: 100%;
+  /* :first-child {
+    background: #ff0;
+  } */
+  :nth-child(2n + 3) {
+    background: #fcd9d9;
+  }
+`
 
 const TableData = styled.td`
   padding-top: 10px;
+  padding-bottom: 10px;
   :first-of-type {
     padding-left: 20px;
   }
