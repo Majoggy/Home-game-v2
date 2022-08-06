@@ -68,6 +68,7 @@ export const DesktopGrid = styled.div`
   margin: 20px;
   height: 820px;
   width: 1200px;
+
   @media only screen and (max-width: 2000px) {
     width: 800px;
     height: 600px;
