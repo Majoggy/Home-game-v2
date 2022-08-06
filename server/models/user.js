@@ -17,7 +17,7 @@ userSchema
   .virtual('addedPlayers', {
     ref: 'Players',
     localField: '_id',
-    foreignField: 'userId',
+    foreignField: 'addedBy',
   })
 
   .get(function (addedPlayers) {
