@@ -41,13 +41,16 @@ function StatsTable({ userInfo }) {
 
 export default StatsTable
 
-const ContentWrap = styled.div``
+const ContentWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+`
 
 const Table = styled.table`
-  width: 100%;
-  height: 95%;
   text-align: center;
   border-collapse: collapse;
+  overflow-y: scroll;
 `
 const TableHead = styled.th`
   background-color: #dd746c;
