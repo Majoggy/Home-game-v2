@@ -48,6 +48,7 @@ const ContentWrap = styled.div`
 `
 
 const Table = styled.table`
+  width: 100%;
   text-align: center;
   border-collapse: collapse;
   overflow-y: scroll;

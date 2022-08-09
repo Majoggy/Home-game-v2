@@ -5,6 +5,7 @@ import { isAuthenticated, getPayLoad } from '../lib/auth'
 import { useNavigate } from 'react-router-dom'
 import { profileUser } from '../lib/api'
 import StatsTable from '../common/StatsTable'
+import GamesList from '../common/GamesList'
 
 function Dashboard() {
   const [userId, setUserId] = React.useState(null)
@@ -50,7 +51,9 @@ function Dashboard() {
         <Div1>
           <StatsTable userInfo={userInfo} />
         </Div1>
-        <Div2></Div2>
+        <Div2>
+          <GamesList userInfo={userInfo} />
+        </Div2>
         <Div3></Div3>
       </DesktopGrid>
       <Spacer />
